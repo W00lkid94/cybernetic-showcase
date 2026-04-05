@@ -1,16 +1,33 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 
-const links = ["Home", "Discover", "Features", "Feedback", "Buy"];
+const links = [
+  { label: "Home", href: "#home" },
+  { label: "Discover", href: "#discover" },
+  { label: "Features", href: "#features" },
+  { label: "Feedback", href: "#feedback" },
+  { label: "Buy", href: "#buy" },
+];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setMobileOpen(false);
+    const el = document.querySelector(href);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <motion.nav
@@ -27,15 +44,17 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-8">
           {links.map((l, i) => (
             <motion.a
-              key={l}
-              href={`#${l.toLowerCase()}`}
+              key={l.label}
+              href={l.href}
+              onClick={(e) => handleClick(e, l.href)}
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + i * 0.1 }}
               whileHover={{ color: "hsl(270, 80%, 60%)", y: -2 }}
+              whileTap={{ scale: 0.9 }}
               className="font-display text-xs tracking-[0.2em] uppercase text-muted-foreground transition-colors"
             >
-              {l}
+              {l.label}
             </motion.a>
           ))}
         </div>

@@ -96,13 +96,16 @@ const PricingSection = () => (
               ))}
             </div>
 
-            <motion.button
+            <motion.a
+              href="https://shop.beacons.ai/alttool/fa2b62f4-cb9f-405b-8ffb-503307c45932?pageViewSource=lib_view&referrer=https%3A%2F%2Fbeacons.ai%2Falttool&show_back_button=true"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.03, boxShadow: "0 0 30px rgba(220,180,50,0.4)" }}
               whileTap={{ scale: 0.97 }}
               className="w-full py-3.5 rounded-lg gradient-gold text-accent-foreground font-display text-sm tracking-[0.2em] uppercase flex items-center justify-center gap-2 transition-opacity"
             >
               Buy Now <ShoppingCart size={16} />
-            </motion.button>
+            </motion.a>
           </div>
 
           <div className="flex justify-between px-8 py-4 border-t border-border">

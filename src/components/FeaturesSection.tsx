@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Shield, Wifi, Eye, Zap, Bug, Globe, FileText, Target } from "lucide-react";
+import { Shield, Eye, Zap, Globe, FileText, Target, MessageCircle } from "lucide-react";
 
 const features = [
   { icon: Target, title: "Attack Tools", desc: "RAT, Stealer, Virus Builder & more" },
@@ -63,6 +63,24 @@ const FeaturesSection = () => {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex justify-center mt-12"
+        >
+          <motion.a
+            href="https://discord.com/invite/ZeMRVUcYVZ"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(160,100,255,0.4)" }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center gap-2 px-8 py-3 border border-primary bg-primary/10 text-primary font-display text-xs tracking-[0.2em] uppercase transition-all border-glow"
+          >
+            <MessageCircle size={16} /> Join Discord
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   );
