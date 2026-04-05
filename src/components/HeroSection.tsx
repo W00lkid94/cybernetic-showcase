@@ -10,7 +10,7 @@ const glitchVariants = {
       "-2px 0 10px rgba(50,255,50,0.3), 2px 0 10px rgba(255,50,255,0.3)",
       "0 0 10px rgba(160,100,255,0.6), 0 0 30px rgba(160,100,255,0.3)",
     ],
-    transition: { duration: 4, repeat: Infinity, ease: "linear" },
+    transition: { duration: 4, repeat: Infinity, ease: "linear" as const },
   },
 };
 
