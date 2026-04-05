@@ -62,7 +62,9 @@ const HeroSection = () => {
         className="flex gap-4 mb-16"
       >
         <motion.a
-          href="#buy"
+          href="https://shop.beacons.ai/alttool/fa2b62f4-cb9f-405b-8ffb-503307c45932?pageViewSource=lib_view&referrer=https%3A%2F%2Fbeacons.ai%2Falttool&show_back_button=true"
+          target="_blank"
+          rel="noopener noreferrer"
           whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(220,180,50,0.4)" }}
           whileTap={{ scale: 0.95 }}
           className="flex items-center gap-2 px-8 py-3 border border-accent bg-accent/10 text-accent font-display text-xs tracking-[0.2em] uppercase transition-all border-glow-gold"
@@ -70,7 +72,9 @@ const HeroSection = () => {
           <ShoppingCart size={16} /> Buy Now
         </motion.a>
         <motion.a
-          href="#community"
+          href="https://discord.com/invite/ZeMRVUcYVZ"
+          target="_blank"
+          rel="noopener noreferrer"
           whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(160,100,255,0.3)" }}
           whileTap={{ scale: 0.95 }}
           className="flex items-center gap-2 px-8 py-3 border border-border text-foreground font-display text-xs tracking-[0.2em] uppercase transition-all"
