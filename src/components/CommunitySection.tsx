@@ -25,7 +25,9 @@ const CommunitySection = () => (
           Get support, updates and connect with other Alt-tool users on our Discord server.
         </p>
         <motion.a
-          href="#"
+          href="https://discord.com/invite/ZeMRVUcYVZ"
+          target="_blank"
+          rel="noopener noreferrer"
           whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(160,100,255,0.4)" }}
           whileTap={{ scale: 0.95 }}
           className="inline-flex items-center gap-2 px-8 py-3 border border-primary bg-primary/10 text-primary font-display text-xs tracking-[0.2em] uppercase transition-all border-glow"
