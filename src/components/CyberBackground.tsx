@@ -46,41 +46,9 @@ const GridPlane = () => {
   );
 };
 
-const PulsingOrbs = () => {
-  const ref = useRef<THREE.Group>(null);
-  useFrame(({ clock }) => {
-    if (ref.current) {
-      ref.current.rotation.y = clock.getElapsedTime() * 0.05;
-    }
-  });
-
-  const orbs = useMemo(() => {
-    return Array.from({ length: 6 }, (_, i) => ({
-      position: [
-        Math.cos((i / 6) * Math.PI * 2) * 8,
-        Math.sin(i * 1.5) * 2,
-        Math.sin((i / 6) * Math.PI * 2) * 8,
-      ] as [number, number, number],
-      scale: 0.3 + Math.random() * 0.4,
-      color: i % 2 === 0 ? "#a064ff" : "#ff40c0",
-    }));
-  }, []);
-
-  return (
-    <group ref={ref}>
-      {orbs.map((orb, i) => (
-        <mesh key={i} position={orb.position}>
-          <sphereGeometry args={[orb.scale, 16, 16]} />
-          <meshBasicMaterial color={orb.color} transparent opacity={0.15} />
-        </mesh>
-      ))}
-    </group>
-  );
-};
-
 const FloatingParticles = () => {
   const ref = useRef<THREE.Points>(null);
-  const count = 400;
+  const count = 200;
 
   const [positions, speeds] = useMemo(() => {
     const pos = new Float32Array(count * 3);
@@ -120,7 +88,6 @@ const CyberBackground = () => (
       <ambientLight intensity={0.2} />
       <GridPlane />
       <FloatingParticles />
-      <PulsingOrbs />
     </Canvas>
   </div>
 );

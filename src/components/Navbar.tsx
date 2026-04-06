@@ -38,7 +38,6 @@ const Navbar = () => {
     >
       <div className="container flex items-center justify-between h-16">
         <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-2">
-          <img src="/images/logo-altsad.png" alt="AltSad Logo" className="w-8 h-8 rounded-full object-cover" />
           <span className="font-display text-sm tracking-widest text-primary font-bold">AltSad</span>
         </motion.div>
         <div className="hidden md:flex items-center gap-8">
