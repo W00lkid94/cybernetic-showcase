@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { ShoppingCart, MessageCircle } from "lucide-react";
+import { useRef } from "react";
 
 const glitchVariants = {
   animate: {
@@ -15,9 +16,27 @@ const glitchVariants = {
 };
 
 const HeroSection = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const rotateX = useSpring(useTransform(mouseY, [-300, 300], [12, -12]), { stiffness: 150, damping: 20 });
+  const rotateY = useSpring(useTransform(mouseX, [-500, 500], [-12, 12]), { stiffness: 150, damping: 20 });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const rect = containerRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    mouseX.set(e.clientX - rect.left - rect.width / 2);
+    mouseY.set(e.clientY - rect.top - rect.height / 2);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
   return (
     <section id="home" className="relative min-h-screen flex flex-col items-center justify-center text-center pt-16 px-4">
-      {/* Scan line overlay */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-20 opacity-[0.03]">
         <motion.div
           className="w-full h-1 bg-primary"
@@ -41,7 +60,7 @@ const HeroSection = () => {
         initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.4, duration: 0.8, type: "spring" }}
-        className="font-display text-5xl md:text-7xl lg:text-8xl font-black tracking-wider text-foreground mb-4"
+        className="font-display text-5xl md:text-7xl lg:text-8xl font-black tracking-[0.15em] text-foreground mb-4"
       >
         ALT-TOOL
       </motion.h1>
@@ -84,14 +103,18 @@ const HeroSection = () => {
       </motion.div>
 
       <motion.div
+        ref={containerRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
         initial={{ opacity: 0, y: 60, rotateX: 15 }}
         animate={{ opacity: 1, y: 0, rotateX: 0 }}
         transition={{ delay: 1.2, duration: 1, type: "spring" }}
         className="w-full max-w-5xl"
-        style={{ perspective: 1000 }}
+        style={{ perspective: 1200 }}
       >
         <motion.div
-          whileHover={{ scale: 1.02, boxShadow: "0 0 40px rgba(160,100,255,0.3)" }}
+          style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+          whileHover={{ boxShadow: "0 0 60px rgba(160,100,255,0.4), 0 20px 60px rgba(160,100,255,0.2)" }}
           transition={{ type: "spring", stiffness: 300 }}
           className="border border-border rounded-lg overflow-hidden border-glow relative"
         >

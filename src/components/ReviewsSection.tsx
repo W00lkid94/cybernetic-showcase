@@ -1,10 +1,9 @@
 import { motion } from "framer-motion";
-import { Star, Clock, Users, MessageCircle, ShieldCheck } from "lucide-react";
+import { Star, Clock, MessageCircle, ShieldCheck } from "lucide-react";
 
 const stats = [
   { icon: Clock, value: "< 2H", label: "Response Time" },
-  { icon: Users, value: "1.2K+", label: "Active Users" },
-  { icon: MessageCircle, value: "500+", label: "Discord Members" },
+  { icon: MessageCircle, value: "300+", label: "Discord Members" },
   { icon: ShieldCheck, value: "99%", label: "Support Rate" },
 ];
 
@@ -47,7 +46,7 @@ const ReviewsSection = () => (
         REVIEWS & SUPPORT
       </motion.h2>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-12">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto mb-12">
         {stats.map((s, i) => (
           <motion.div
             key={s.label}

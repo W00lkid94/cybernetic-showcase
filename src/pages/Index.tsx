@@ -1,4 +1,4 @@
-import ParticlesBackground from "@/components/ParticlesBackground";
+import CyberBackground from "@/components/CyberBackground";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import FeaturesSection from "@/components/FeaturesSection";
@@ -10,7 +10,7 @@ import Footer from "@/components/Footer";
 const Index = () => {
   return (
     <div className="relative min-h-screen bg-background overflow-hidden scanline">
-      <ParticlesBackground />
+      <CyberBackground />
       <div className="relative z-10">
         <Navbar />
         <HeroSection />
