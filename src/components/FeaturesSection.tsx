@@ -4,10 +4,10 @@ import { Shield, Eye, Zap, Globe, FileText, Target, MessageCircle } from "lucide
 const features = [
   { icon: Target, title: "Attack Tools", desc: "RAT, Stealer, Virus Builder & more" },
   { icon: Globe, title: "Web Scanner", desc: "Advanced web vulnerability scanning" },
-  { icon: Eye, title: "OSINT", desc: "Open source intelligence gathering" },
-  { icon: Shield, title: "Phishing", desc: "Custom phishing page builder" },
+  { icon: Eye, title: "OSINT", desc: "Username tracker, Email tracker & Database lookup" },
+  { icon: Shield, title: "Phishing", desc: "Fausse page de phishing personnalisable" },
   { icon: Zap, title: "DDoS", desc: "Powerful denial of service tools" },
-  { icon: FileText, title: "Export Report", desc: "Full report generation & export" },
+  { icon: FileText, title: "CMD", desc: "RAT & Raiders intégrés" },
 ];
 
 const cardVariants = {
