@@ -28,14 +28,6 @@ const CountUp = ({ value }: { value: string }) => (
 const ReviewsSection = () => (
   <section id="feedback" className="relative py-24 px-4">
     <div className="container">
-      <motion.p
-        initial={{ opacity: 0, x: -30 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        className="font-mono-cyber text-xs text-center tracking-[0.3em] uppercase text-primary mb-2"
-      >
-        // Section 02
-      </motion.p>
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
