@@ -16,7 +16,7 @@ const glitchVariants = {
 
 const HeroSection = () => {
   return (
-    <section id="home" className="relative min-h-screen flex flex-col items-center justify-center text-center pt-16 px-4">
+    <section id="home" className="relative min-h-screen flex flex-col items-center justify-center text-center pt-32 md:pt-40 px-4">
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-20 opacity-[0.03]">
         <motion.div
           className="w-full h-1 bg-primary"
