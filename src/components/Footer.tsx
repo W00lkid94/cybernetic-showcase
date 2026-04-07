@@ -13,12 +13,12 @@ const Footer = () => (
         <motion.img
           src={logoImg}
           alt="AltSad"
-          className="h-8 w-8 object-contain"
+          className="h-10 w-10 object-contain"
           animate={{ rotate: [0, 5, -5, 0] }}
           transition={{ duration: 6, repeat: Infinity }}
         />
-        <span className="font-pixel text-[8px] tracking-widest text-primary font-bold">AltSad</span>
-        <span className="font-pixel text-[7px] tracking-widest text-muted-foreground">© 2026</span>
+        <span className="font-display text-sm tracking-widest text-primary font-bold">AltSad</span>
+        <span className="font-display text-xs tracking-widest text-muted-foreground">© 2026</span>
       </div>
       <div className="flex gap-6">
         {["Terms", "Privacy", "Contact"].map((l) => (
@@ -26,7 +26,7 @@ const Footer = () => (
             key={l}
             href="#"
             whileHover={{ color: "hsl(270, 80%, 60%)", y: -2 }}
-            className="font-pixel text-[7px] text-muted-foreground transition-colors tracking-wider"
+            className="font-display text-xs text-muted-foreground transition-colors tracking-wider"
           >
             {l}
           </motion.a>

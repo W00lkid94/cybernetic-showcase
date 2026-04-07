@@ -20,13 +20,13 @@ const cardVariants = {
 
 const FeaturesSection = () => {
   return (
-    <section id="features" className="relative py-24 px-4 pixel-grid">
+    <section id="discover" className="relative py-24 px-4">
       <div className="container">
         <motion.p
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="font-pixel text-[8px] text-center tracking-[0.3em] uppercase text-primary mb-4"
+          className="font-display text-xs text-center tracking-[0.3em] uppercase text-primary mb-4"
         >
           // Section 01
         </motion.p>
@@ -66,7 +66,6 @@ const FeaturesSection = () => {
               }}
               className="border-2 border-border rounded-lg p-6 bg-card/50 transition-colors cursor-pointer relative overflow-hidden"
             >
-              {/* Auto-pulsing corner pixel */}
               <motion.div
                 className="absolute top-2 right-2 w-2 h-2 bg-primary"
                 animate={{ opacity: [0.3, 1, 0.3], scale: [0.8, 1.2, 0.8] }}
@@ -78,8 +77,8 @@ const FeaturesSection = () => {
               >
                 <f.icon className="text-primary mb-4" size={28} />
               </motion.div>
-              <h3 className="font-pixel text-[9px] tracking-widest uppercase text-foreground mb-3">{f.title}</h3>
-              <p className="text-sm text-muted-foreground font-body">{f.desc}</p>
+              <h3 className="font-display text-sm tracking-widest uppercase text-foreground mb-3">{f.title}</h3>
+              <p className="text-sm text-muted-foreground font-display">{f.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -104,7 +103,7 @@ const FeaturesSection = () => {
               ]
             }}
             transition={{ duration: 2.5, repeat: Infinity }}
-            className="inline-flex items-center gap-2 px-8 py-3 border-2 border-primary bg-primary/10 text-primary font-pixel text-[8px] tracking-[0.15em] uppercase pixel-border"
+            className="inline-flex items-center gap-2 px-8 py-3 border-2 border-primary bg-primary/10 text-primary font-display text-xs tracking-[0.15em] uppercase"
             style={{ borderColor: "hsl(270 80% 60%)" }}
           >
             <MessageCircle size={14} /> Join Discord

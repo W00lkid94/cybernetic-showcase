@@ -14,13 +14,13 @@ const reviews = [
 ];
 
 const ReviewsSection = () => (
-  <section id="feedback" className="relative py-24 px-4 pixel-grid">
+  <section id="feedback" className="relative py-24 px-4">
     <div className="container">
       <motion.p
         initial={{ opacity: 0, x: -30 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        className="font-pixel text-[8px] text-center tracking-[0.3em] uppercase text-primary mb-4"
+        className="font-display text-xs text-center tracking-[0.3em] uppercase text-primary mb-4"
       >
         // Section 02
       </motion.p>
@@ -63,7 +63,6 @@ const ReviewsSection = () => (
             }}
             className="border-2 border-border rounded-lg p-5 text-center bg-card/30 relative overflow-hidden"
           >
-            {/* Auto-animated data line */}
             <motion.div
               className="absolute bottom-0 left-0 h-0.5 bg-primary/50"
               animate={{ width: ["0%", "100%", "0%"] }}
@@ -84,7 +83,7 @@ const ReviewsSection = () => (
             >
               {s.value}
             </motion.p>
-            <p className="text-[7px] text-muted-foreground font-pixel tracking-wider mt-2">{s.label}</p>
+            <p className="text-xs text-muted-foreground font-display tracking-wider mt-2">{s.label}</p>
           </motion.div>
         ))}
       </div>
@@ -107,7 +106,6 @@ const ReviewsSection = () => (
             }}
             className="border-2 border-border rounded-lg p-6 bg-card/30 relative overflow-hidden"
           >
-            {/* Pixel corner accents */}
             <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-primary/50" />
             <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-primary/50" />
             <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-primary/50" />
@@ -127,8 +125,8 @@ const ReviewsSection = () => (
                 </motion.div>
               ))}
             </div>
-            <p className="text-sm text-muted-foreground mb-4 leading-relaxed">"{r.text}"</p>
-            <p className="text-[8px] text-primary font-pixel italic">{r.author}</p>
+            <p className="text-sm text-muted-foreground mb-4 leading-relaxed font-display">"{r.text}"</p>
+            <p className="text-xs text-primary font-display italic">{r.author}</p>
           </motion.div>
         ))}
       </div>
