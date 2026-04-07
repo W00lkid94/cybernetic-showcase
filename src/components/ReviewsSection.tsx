@@ -13,26 +13,14 @@ const reviews = [
   { text: "Complete tool, responsive, and discreet. Looking forward to seeing the next features arrive.", author: "Anonymous" },
 ];
 
-const CountUp = ({ value }: { value: string }) => (
-  <motion.p
-    initial={{ opacity: 0, scale: 0.5 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ type: "spring", stiffness: 200, damping: 10 }}
-    className="font-display text-xl md:text-2xl font-bold text-accent"
-  >
-    {value}
-  </motion.p>
-);
-
 const ReviewsSection = () => (
-  <section id="feedback" className="relative py-24 px-4">
+  <section id="feedback" className="relative py-24 px-4 pixel-grid">
     <div className="container">
       <motion.p
         initial={{ opacity: 0, x: -30 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        className="font-mono-cyber text-xs text-center tracking-[0.3em] uppercase text-primary mb-2"
+        className="font-pixel text-[8px] text-center tracking-[0.3em] uppercase text-primary mb-4"
       >
         // Section 02
       </motion.p>
@@ -43,7 +31,18 @@ const ReviewsSection = () => (
         transition={{ duration: 0.8 }}
         className="font-display text-3xl md:text-4xl font-bold text-center tracking-wider text-foreground mb-16"
       >
-        REVIEWS & SUPPORT
+        <motion.span
+          animate={{
+            textShadow: [
+              "0 0 5px rgba(160,100,255,0.3)",
+              "0 0 20px rgba(160,100,255,0.6)",
+              "0 0 5px rgba(160,100,255,0.3)",
+            ]
+          }}
+          transition={{ duration: 3, repeat: Infinity }}
+        >
+          REVIEWS & SUPPORT
+        </motion.span>
       </motion.h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto mb-12">
@@ -54,14 +53,38 @@ const ReviewsSection = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.15 }}
-            whileHover={{ scale: 1.08, boxShadow: "0 0 20px rgba(160,100,255,0.2)" }}
-            className="border border-border rounded-lg p-5 text-center bg-card/30"
+            whileHover={{ scale: 1.08 }}
+            animate={{
+              boxShadow: [
+                "0 0 5px rgba(160,100,255,0.1)",
+                "0 0 20px rgba(160,100,255,0.25)",
+                "0 0 5px rgba(160,100,255,0.1)",
+              ]
+            }}
+            className="border-2 border-border rounded-lg p-5 text-center bg-card/30 relative overflow-hidden"
           >
-            <motion.div whileHover={{ rotate: 360 }} transition={{ duration: 0.6 }}>
+            {/* Auto-animated data line */}
+            <motion.div
+              className="absolute bottom-0 left-0 h-0.5 bg-primary/50"
+              animate={{ width: ["0%", "100%", "0%"] }}
+              transition={{ duration: 3, repeat: Infinity, delay: i * 0.5 }}
+            />
+            <motion.div
+              animate={{ y: [0, -3, 0], rotate: [0, 10, -10, 0] }}
+              transition={{ duration: 3, repeat: Infinity, delay: i * 0.2 }}
+            >
               <s.icon className="mx-auto text-primary mb-2" size={22} />
             </motion.div>
-            <CountUp value={s.value} />
-            <p className="text-xs text-muted-foreground font-mono-cyber tracking-wider mt-1">{s.label}</p>
+            <motion.p
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ type: "spring" as const, stiffness: 200, damping: 10 }}
+              className="font-display text-xl md:text-2xl font-bold text-accent"
+            >
+              {s.value}
+            </motion.p>
+            <p className="text-[7px] text-muted-foreground font-pixel tracking-wider mt-2">{s.label}</p>
           </motion.div>
         ))}
       </div>
@@ -75,8 +98,21 @@ const ReviewsSection = () => (
             viewport={{ once: true }}
             transition={{ delay: i * 0.2, duration: 0.6 }}
             whileHover={{ scale: 1.03, borderColor: "hsl(270, 80%, 60%)" }}
-            className="border border-border rounded-lg p-6 bg-card/30"
+            animate={{
+              borderColor: [
+                "hsl(270 40% 25%)",
+                "hsl(270 60% 40%)",
+                "hsl(270 40% 25%)",
+              ]
+            }}
+            className="border-2 border-border rounded-lg p-6 bg-card/30 relative overflow-hidden"
           >
+            {/* Pixel corner accents */}
+            <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-primary/50" />
+            <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-primary/50" />
+            <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-primary/50" />
+            <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-primary/50" />
+            
             <div className="flex gap-1 mb-4">
               {[...Array(5)].map((_, j) => (
                 <motion.div
@@ -85,13 +121,14 @@ const ReviewsSection = () => (
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.2 + j * 0.1 }}
+                  animate={{ scale: [1, 1.2, 1] }}
                 >
                   <Star size={14} className="fill-accent text-accent" />
                 </motion.div>
               ))}
             </div>
             <p className="text-sm text-muted-foreground mb-4 leading-relaxed">"{r.text}"</p>
-            <p className="text-xs text-primary font-mono-cyber italic">{r.author}</p>
+            <p className="text-[8px] text-primary font-pixel italic">{r.author}</p>
           </motion.div>
         ))}
       </div>

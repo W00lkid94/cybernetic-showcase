@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="relative min-h-screen bg-background overflow-hidden scanline">
+    <div className="relative min-h-screen bg-background overflow-hidden scanline crt-sweep">
       <CyberBackground />
       <div className="relative z-10">
         <Navbar />
