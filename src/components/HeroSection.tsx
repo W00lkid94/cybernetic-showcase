@@ -27,7 +27,6 @@ const HeroSection = () => {
   const rotateX = useSpring(useTransform(mouseY, [-300, 300], [12, -12]), { stiffness: 150, damping: 20 });
   const rotateY = useSpring(useTransform(mouseX, [-500, 500], [-12, 12]), { stiffness: 150, damping: 20 });
 
-  // Typewriter effect
   useEffect(() => {
     let i = 0;
     const interval = setInterval(() => {
@@ -41,7 +40,6 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Blinking cursor
   useEffect(() => {
     const interval = setInterval(() => setShowCursor(c => !c), 500);
     return () => clearInterval(interval);
@@ -60,7 +58,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex flex-col items-center justify-center text-center pt-16 px-4 pixel-grid">
+    <section id="home" className="relative min-h-screen flex flex-col items-center justify-center text-center pt-16 px-4">
       {/* Scanline auto-animation */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-20 opacity-[0.04]">
         <motion.div
@@ -70,35 +68,13 @@ const HeroSection = () => {
         />
       </div>
 
-      {/* Floating pixel particles - auto animation */}
-      {[...Array(8)].map((_, i) => (
-        <motion.div
-          key={`pixel-${i}`}
-          className="absolute w-1.5 h-1.5 bg-primary/40"
-          style={{
-            left: `${10 + i * 12}%`,
-            top: `${20 + (i % 3) * 25}%`,
-          }}
-          animate={{
-            y: [0, -30, 0],
-            opacity: [0.2, 0.8, 0.2],
-            scale: [1, 1.5, 1],
-          }}
-          transition={{
-            duration: 2 + i * 0.5,
-            repeat: Infinity,
-            delay: i * 0.3,
-          }}
-        />
-      ))}
-
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="font-pixel text-[8px] md:text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-6 animate-flicker"
+        className="font-display text-xs md:text-sm tracking-[0.3em] uppercase text-muted-foreground mb-6 animate-flicker"
       >
-        &gt; SYS.ONLINE — V2.0.26_
+        Par Team AltSad
       </motion.p>
 
       <motion.h1
@@ -113,7 +89,7 @@ const HeroSection = () => {
       </motion.h1>
 
       <div className="h-8 mb-10">
-        <span className="font-pixel text-[8px] md:text-[10px] uppercase text-primary tracking-[0.2em]">
+        <span className="font-display text-xs md:text-sm uppercase text-primary tracking-[0.2em]">
           {typed}
           <span className={showCursor ? "opacity-100" : "opacity-0"}>█</span>
         </span>
@@ -139,7 +115,7 @@ const HeroSection = () => {
             ]
           }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="flex items-center gap-2 px-8 py-3 border-2 border-accent bg-accent/10 text-accent font-pixel text-[8px] tracking-[0.15em] uppercase pixel-border"
+          className="flex items-center gap-2 px-8 py-3 border-2 border-accent bg-accent/10 text-accent font-display text-xs tracking-[0.15em] uppercase"
           style={{ borderColor: "hsl(45 100% 55%)" }}
         >
           <ShoppingCart size={14} /> Buy Now
@@ -158,7 +134,7 @@ const HeroSection = () => {
             ]
           }}
           transition={{ duration: 3, repeat: Infinity }}
-          className="flex items-center gap-2 px-8 py-3 border-2 border-border text-foreground font-pixel text-[8px] tracking-[0.15em] uppercase"
+          className="flex items-center gap-2 px-8 py-3 border-2 border-border text-foreground font-display text-xs tracking-[0.15em] uppercase"
         >
           <MessageCircle size={14} /> Discord
         </motion.a>
@@ -186,7 +162,6 @@ const HeroSection = () => {
           transition={{ duration: 4, repeat: Infinity }}
           className="border-2 border-primary/50 rounded-lg overflow-hidden relative"
         >
-          {/* Animated border top */}
           <div className="h-1 animate-border-travel" />
           <div className="flex items-center gap-2 px-4 py-2 bg-secondary/50 border-b border-border">
             <motion.div animate={{ opacity: [0.4, 1, 0.4] }} transition={{ duration: 2, repeat: Infinity }} className="w-3 h-3 rounded-full bg-green-500/80" />
@@ -195,7 +170,7 @@ const HeroSection = () => {
             <motion.span
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ duration: 3, repeat: Infinity }}
-              className="ml-4 font-pixel text-[7px] text-muted-foreground tracking-widest"
+              className="ml-4 font-display text-[10px] text-muted-foreground tracking-widest"
             >
               ALT-TOOL // INTERFACE PREVIEW
             </motion.span>
@@ -210,11 +185,11 @@ const HeroSection = () => {
         transition={{ delay: 2 }}
         className="mt-16"
       >
-        <p className="font-pixel text-[8px] tracking-[0.3em] uppercase text-muted-foreground">Discover</p>
+        <p className="font-display text-xs tracking-[0.3em] uppercase text-muted-foreground">Discover</p>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
-          className="mt-2 text-primary font-pixel text-xs"
+          className="mt-2 text-primary font-display text-sm"
         >
           ▼
         </motion.div>

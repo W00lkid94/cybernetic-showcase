@@ -37,12 +37,12 @@ const Navbar = () => {
       <div className="container flex items-center justify-between h-20">
         <motion.div
           whileHover={{ scale: 1.05 }}
-          className="flex items-center gap-3"
+          className="flex items-center gap-4"
         >
           <motion.img
             src={logoImg}
             alt="AltSad Logo"
-            className="h-14 w-14 object-contain drop-shadow-[0_0_15px_rgba(160,100,255,0.6)]"
+            className="h-16 w-16 object-contain drop-shadow-[0_0_15px_rgba(160,100,255,0.6)]"
             animate={{ 
               rotate: [0, 5, -5, 0],
               filter: [
@@ -54,7 +54,7 @@ const Navbar = () => {
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           />
           <motion.span
-            className="font-display text-sm tracking-widest text-primary font-bold"
+            className="font-display text-lg tracking-widest text-primary font-bold"
             animate={{
               textShadow: [
                 "0 0 5px rgba(160,100,255,0.3)",
@@ -78,7 +78,7 @@ const Navbar = () => {
               transition={{ delay: 0.3 + i * 0.1 }}
               whileHover={{ color: "hsl(270, 80%, 60%)", y: -2, textShadow: "0 0 15px rgba(160,100,255,0.8)" }}
               whileTap={{ scale: 0.9 }}
-              className="font-display text-xs tracking-[0.2em] uppercase text-muted-foreground transition-colors pixel-text"
+              className="font-display text-xs tracking-[0.2em] uppercase text-muted-foreground transition-colors"
             >
               {l.label}
             </motion.a>
