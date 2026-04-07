@@ -11,13 +11,13 @@ const features = [
 ];
 
 const PricingSection = () => (
-  <section id="buy" className="relative py-24 px-4">
+  <section id="buy" className="relative py-24 px-4 pixel-grid">
     <div className="container">
       <motion.p
         initial={{ opacity: 0, x: -30 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        className="font-mono-cyber text-xs text-center tracking-[0.3em] uppercase text-primary mb-2"
+        className="font-pixel text-[8px] text-center tracking-[0.3em] uppercase text-primary mb-4"
       >
         // Section 03
       </motion.p>
@@ -28,7 +28,18 @@ const PricingSection = () => (
         transition={{ duration: 0.8 }}
         className="font-display text-3xl md:text-4xl font-bold text-center tracking-wider text-foreground mb-16"
       >
-        GET ALT-TOOL
+        <motion.span
+          animate={{
+            textShadow: [
+              "0 0 5px rgba(220,180,50,0.3)",
+              "0 0 25px rgba(220,180,50,0.7), 2px 2px 0 rgba(160,100,255,0.3)",
+              "0 0 5px rgba(220,180,50,0.3)",
+            ]
+          }}
+          transition={{ duration: 3, repeat: Infinity }}
+        >
+          GET ALT-TOOL
+        </motion.span>
       </motion.h2>
 
       <motion.div
@@ -39,41 +50,49 @@ const PricingSection = () => (
         className="max-w-md mx-auto"
       >
         <motion.div
-          whileHover={{ boxShadow: "0 0 50px rgba(160,100,255,0.25), 0 0 100px rgba(220,180,50,0.1)" }}
-          animate={{ boxShadow: ["0 0 20px rgba(160,100,255,0.1)", "0 0 40px rgba(160,100,255,0.2)", "0 0 20px rgba(160,100,255,0.1)"] }}
+          whileHover={{ boxShadow: "0 0 60px rgba(160,100,255,0.3), 0 0 120px rgba(220,180,50,0.15)" }}
+          animate={{
+            boxShadow: [
+              "0 0 15px rgba(160,100,255,0.1), 4px 4px 0 rgba(160,100,255,0.15)",
+              "0 0 40px rgba(160,100,255,0.25), 4px 4px 0 rgba(160,100,255,0.25)",
+              "0 0 15px rgba(160,100,255,0.1), 4px 4px 0 rgba(160,100,255,0.15)",
+            ]
+          }}
           transition={{ duration: 3, repeat: Infinity }}
-          className="relative border border-border rounded-xl overflow-hidden bg-card/50"
+          className="relative border-2 border-primary/50 rounded-xl overflow-hidden bg-card/50"
         >
-          <motion.div
-            className="h-1 gradient-gold"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5, duration: 1 }}
-            style={{ transformOrigin: "left" }}
-          />
+          {/* Animated top border */}
+          <div className="h-1 animate-border-travel" />
 
           <div className="p-8 text-center">
             <motion.div
               initial={{ opacity: 0, scale: 0 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.3, type: "spring", stiffness: 300 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent bg-accent/10 text-accent font-display text-xs tracking-widest mb-6"
+              transition={{ delay: 0.3, type: "spring" as const, stiffness: 300 }}
+              animate={{ scale: [1, 1.05, 1] }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent bg-accent/10 text-accent font-pixel text-[7px] tracking-widest mb-6"
             >
-              <ShoppingCart size={14} /> PREMIUM ACCESS
+              <ShoppingCart size={12} /> PREMIUM ACCESS
             </motion.div>
 
-            <p className="font-mono-cyber text-xs text-muted-foreground tracking-widest mb-2">ALT-TOOL INTERFACE</p>
-            
+            <p className="font-pixel text-[7px] text-muted-foreground tracking-widest mb-3">ALT-TOOL INTERFACE</p>
+
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
+              transition={{ delay: 0.5, type: "spring" as const, stiffness: 200 }}
+              animate={{
+                textShadow: [
+                  "0 0 10px rgba(220,180,50,0.3)",
+                  "0 0 30px rgba(220,180,50,0.7)",
+                  "0 0 10px rgba(220,180,50,0.3)",
+                ]
+              }}
               className="flex items-baseline justify-center gap-1 mb-2"
             >
-              <span className="font-display text-6xl font-black text-accent text-glow-gold">45</span>
+              <span className="font-display text-6xl font-black text-accent">45</span>
               <span className="font-display text-2xl text-accent">€</span>
             </motion.div>
             <p className="text-sm text-muted-foreground mb-8">One-time payment — Permanent access</p>
@@ -88,7 +107,10 @@ const PricingSection = () => (
                   transition={{ delay: 0.6 + i * 0.1 }}
                   className="flex items-center gap-3"
                 >
-                  <motion.div whileHover={{ scale: 1.3, rotate: 360 }} transition={{ duration: 0.3 }}>
+                  <motion.div
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
+                  >
                     <CheckCircle size={18} className="text-primary shrink-0" />
                   </motion.div>
                   <span className="text-sm text-foreground">{f}</span>
@@ -100,21 +122,37 @@ const PricingSection = () => (
               href="https://shop.beacons.ai/alttool/fa2b62f4-cb9f-405b-8ffb-503307c45932?pageViewSource=lib_view&referrer=https%3A%2F%2Fbeacons.ai%2Falttool&show_back_button=true"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.03, boxShadow: "0 0 30px rgba(220,180,50,0.4)" }}
+              whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="w-full py-3.5 rounded-lg gradient-gold text-accent-foreground font-display text-sm tracking-[0.2em] uppercase flex items-center justify-center gap-2 transition-opacity"
+              animate={{
+                boxShadow: [
+                  "0 0 10px rgba(220,180,50,0.2)",
+                  "0 0 30px rgba(220,180,50,0.5)",
+                  "0 0 10px rgba(220,180,50,0.2)",
+                ]
+              }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="w-full py-3.5 rounded-lg gradient-gold text-accent-foreground font-pixel text-[8px] tracking-[0.15em] uppercase flex items-center justify-center gap-2"
             >
-              Buy Now <ShoppingCart size={16} />
+              Buy Now <ShoppingCart size={14} />
             </motion.a>
           </div>
 
           <div className="flex justify-between px-8 py-4 border-t border-border">
-            <span className="flex items-center gap-1 text-xs text-muted-foreground font-mono-cyber tracking-widest">
-              <Lock size={12} /> SECURE CHECKOUT
-            </span>
-            <span className="flex items-center gap-1 text-xs text-muted-foreground font-mono-cyber tracking-widest">
-              <ShieldCheck size={12} /> SSL ENCRYPTED
-            </span>
+            <motion.span
+              animate={{ opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="flex items-center gap-1 text-[7px] text-muted-foreground font-pixel tracking-widest"
+            >
+              <Lock size={10} /> SECURE
+            </motion.span>
+            <motion.span
+              animate={{ opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+              className="flex items-center gap-1 text-[7px] text-muted-foreground font-pixel tracking-widest"
+            >
+              <ShieldCheck size={10} /> SSL
+            </motion.span>
           </div>
         </motion.div>
       </motion.div>

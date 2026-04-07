@@ -20,13 +20,13 @@ const cardVariants = {
 
 const FeaturesSection = () => {
   return (
-    <section id="features" className="relative py-24 px-4">
+    <section id="features" className="relative py-24 px-4 pixel-grid">
       <div className="container">
         <motion.p
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="font-mono-cyber text-xs text-center tracking-[0.3em] uppercase text-primary mb-2"
+          className="font-pixel text-[8px] text-center tracking-[0.3em] uppercase text-primary mb-4"
         >
           // Section 01
         </motion.p>
@@ -37,7 +37,18 @@ const FeaturesSection = () => {
           transition={{ duration: 0.8 }}
           className="font-display text-3xl md:text-4xl font-bold text-center text-foreground mb-16"
         >
-          FEATURES
+          <motion.span
+            animate={{
+              textShadow: [
+                "0 0 5px rgba(160,100,255,0.3)",
+                "0 0 20px rgba(160,100,255,0.6), 2px 2px 0 rgba(255,50,50,0.3)",
+                "0 0 5px rgba(160,100,255,0.3)",
+              ]
+            }}
+            transition={{ duration: 3, repeat: Infinity }}
+          >
+            FEATURES
+          </motion.span>
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {features.map((f, i) => (
@@ -53,12 +64,21 @@ const FeaturesSection = () => {
                 borderColor: "hsl(270, 80%, 60%)",
                 boxShadow: "0 0 30px rgba(160,100,255,0.3), inset 0 0 15px rgba(160,100,255,0.1)",
               }}
-              className="border border-border rounded-lg p-6 bg-card/50 transition-colors cursor-pointer"
+              className="border-2 border-border rounded-lg p-6 bg-card/50 transition-colors cursor-pointer relative overflow-hidden"
             >
-              <motion.div whileHover={{ rotate: [0, -10, 10, 0], scale: 1.2 }} transition={{ duration: 0.5 }}>
+              {/* Auto-pulsing corner pixel */}
+              <motion.div
+                className="absolute top-2 right-2 w-2 h-2 bg-primary"
+                animate={{ opacity: [0.3, 1, 0.3], scale: [0.8, 1.2, 0.8] }}
+                transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2 }}
+              />
+              <motion.div
+                animate={{ rotate: [0, 5, -5, 0] }}
+                transition={{ duration: 4, repeat: Infinity, delay: i * 0.3 }}
+              >
                 <f.icon className="text-primary mb-4" size={28} />
               </motion.div>
-              <h3 className="font-display text-sm tracking-widest uppercase text-foreground mb-2">{f.title}</h3>
+              <h3 className="font-pixel text-[9px] tracking-widest uppercase text-foreground mb-3">{f.title}</h3>
               <p className="text-sm text-muted-foreground font-body">{f.desc}</p>
             </motion.div>
           ))}
@@ -76,9 +96,18 @@ const FeaturesSection = () => {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(160,100,255,0.4)" }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2 px-8 py-3 border border-primary bg-primary/10 text-primary font-display text-xs tracking-[0.2em] uppercase transition-all border-glow"
+            animate={{
+              boxShadow: [
+                "0 0 5px rgba(160,100,255,0.2)",
+                "0 0 20px rgba(160,100,255,0.5)",
+                "0 0 5px rgba(160,100,255,0.2)",
+              ]
+            }}
+            transition={{ duration: 2.5, repeat: Infinity }}
+            className="inline-flex items-center gap-2 px-8 py-3 border-2 border-primary bg-primary/10 text-primary font-pixel text-[8px] tracking-[0.15em] uppercase pixel-border"
+            style={{ borderColor: "hsl(270 80% 60%)" }}
           >
-            <MessageCircle size={16} /> Join Discord
+            <MessageCircle size={14} /> Join Discord
           </motion.a>
         </motion.div>
       </div>
